@@ -1,0 +1,50 @@
+Curso Android - Criando Crud Completo
+
+Source code - GitHub:
+Seção 1, aula 15.
+GitHub: https://github.com/sthefanysoares/CursoAndroidCrud
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+</android.support.constraint.ConstraintLayout>
+
+
+This view is not constrained. It only has designtime positions, so it will jump to (0,0) at runtime unless you add the constraints
+
+Ajeito pra isso: (lá em gradle-> build.gradle(Modulo:app)
+	implementation 'com.android.support.constraint:constraint-layout:1.1.1  ... talvez 1.1.3' talvez seja 1.1.2(caso der erro)
+e
+implementation 'com.android.support:appcompat-v7:28.0.0-alpha1'
+ou
+
+implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+e
+implementation 'com.android.support:appcompat-v7:28.0.0'
+
+
+CONSERTANDO O ERRO: missing constraints in constraintLayout 
+  Ajeito pra isso :(lá em values -> styles.xml)  
+  <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+
+useless leaf layout
+
+Para corrigir error egMakeCUrrent failed
+Vá em ADV e em Emulated Performance e vá em Boot option e marque Cold boot.
+
+Para corrigir o erro Session 'app': Error Installing APKs
+Acho gradle(verde)e dou um refresh all gradle project e dps vou em file-> settings -> Build, Execution, Deployment-> Instant run e dps desmarco a opção Enable Instant Run to hot swap...
+
+alt + insert para definir os métodos Getter and Setter.
+
+Quando no código eu não esteja conseguindo fazer referência a uma classe de fora, tenho que ir na lampadazinha e clicar em direcionar para , aí pega!
+
+........
+
+build -> clear projeto , pra poder corrigir o q está pendente.

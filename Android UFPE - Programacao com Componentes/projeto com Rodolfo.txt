@@ -1,0 +1,2 @@
+É um aplicativo para achar oficina, basicamente vai ter uma tela de login, uma tela com uma lista de oficinas e um mapa com as oficinas plotadas, o perfil da oficina e do usuário, eu tô fazendo a lista de oficinas.
+Para eu fazer: como plotar as informações num mapa. Tipo, eu tô num lugar e abro o mapa e vejo o icone das oficinas no mapa e tal.

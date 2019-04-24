@@ -1,0 +1,284 @@
+Curso Git - Udemy - grátis
+
+Onde o git guarda suas coisas?
+  Git config do sistema como um 
+todo, do usuário e do projeto.
+
+Usando primeiro o config do usuário que é o global
+
+git config --global user.name "Renata Cristovam"
+
+git config --global user.email "rcs7@cin.ufpe.br"
+
+git config --global core.editor Notepad++
+
+git config user.name
+//pra saber o nome
+
+git config user.email
+//pra saber o email
+
+git config --list
+//pra saber td
+
+Inicalizar o nosso repositório:
+
+Criando pasta para o meu projeto
+mkdir git-course
+
+Entrar na pasta
+cd git-course // linux e mac
+dir git-course // Windows
+
+Para inicializar um repositório e ele ser considerardo parte do repositório do ecossistema do git
+git init //inicializa o repositório e fica enxergando tdas as mudanças q tiverem dentro do projeto.
+Ou seja agr inicializei o arquivo com o diretório .git
+fico em C:/Users/dell/git-course/git/
+
+
+ls -la // ele diz que tem msm um diretório chamado git.
+
+Abro o diretório git:
+cd .git/
+
+//Dentro do git tenho algumas pastas. Responsáveis por guardar a configuração do repositório, ql é o branche padrão que ele tá, quais são os branches existentes no meu projeto e uma descrição dele, hooks que são gatilhos para fazerem certas ações durante o meu projeto e outras coisas relacionadas aos objetos e referência que a gnt tem cada arquivo do git.
+
+cd.. //voltei um diretório e tô na pasta de novo do git.
+
+Já inicializei meu repositório e já posso trabalhar em cima dele.
+
+git status //reporta como está meu repositório neste momento.
+
+digito ls e não tenho nenhum arquivo ainda
+
+primeiro comando aprendido no git:
+
+git status
+ vai dizer 
+On branch master
+Initial comit
+nothing to commit(create/copy files and use "git add" to track)
+
+vim Readme.md  //crio um arquivo dentro da pasta git-course , mas que ainda tá fora da pasta .git/
+
+escrevo dentro dele : Git course
+dps aperto esc e aperto :wq para savar e sair do arq.
+
+git status
+//agr aparece Untracked	files:
+//(use "git add <file>..." to include in what will be committed)
+
+git add Readme.md
+
+git status
+//Agr ele vê que já tenho um arquivo que já pode ser commitado, ou seja,
+já posso criar uma versão dele.
+
+vim Readme.md   e escrevo mais algo dentro
+//esc :wq pra salvar o q escrevi dentro e sair.
+
+git status// já diz que o arquivo foi modificado
+//changes not staged for commit
+
+git add Readme.md
+
+git status
+//changes to be commited, ou seja , agr ele está pronto para ser commitado.
+
+//crio meu primeiro commit. Pegue todos os arquivos do meu repositório e crie uma imagem dele, crie o meu snapshot
+
+git commit -m "Add Readme.md"  //"é só um comentário", -m = eh uma msg.
+//nunca vai ter uma versão com os mesmos números. E é a partir deles que posso dizer volta pra aquele estado.
+
+git status
+
+se eu editar novamente o Readme.md
+vim Readme.md
+//Digito:
+saiba mais em [willianjusten.com.br](http://willianjusten.com.br)
+esc :wq
+
+git status
+//diz que o arquivo foi modificado.
+
+//mas se eu tentar commitar sem add essa modificação dá erro.
+
+git commit -m "vai dar erro"
+//diz que 
+//changes not staged for commit
+//no changes added to commit
+
+//preciso antes add esse arquivo pra dps commitar
+git add Readme.md
+
+git status// ele tá no staged e tá pronto para ser commitado;
+
+git commit -m "Add link to more info"
+
+//untracked ainda não foi visto pelo git
+//unmodified não teve nenhuma modificação
+//modified o arquivo foi editado, mas não foi levado pra ser salvo, para ser
+//colocado em imagem
+//staged estou pronto para ser commitado. Estou pronto para ser salvo.
+
+git log
+
+git log --decorate
+
+git log --author="will"
+git log --author="Renata Cristovam"
+
+git shortlog // em ordem alfabética qls foram os autores, qts commites fizeram , arquivos e informações.
+
+git short -sn // só a qtd de commits e a pessoa
+
+git log --graph // de forma grafica mostra o q está acontecendo com os meus branches e minhas versões.
+
+//o git log tem uma hash
+git show hashQueCopieiDoGitLog 
+ex: git show 2ef8b69136cb2b9504497a873cacf2a5428031dc
+//tem uma parte q aparece +"texto que add por último e tal"
+
+//vê a mudança antes msm dela ser feita.
+dou primeiro um git status // pra //dar uma olhada.
+
+vim Readme.md
+esc :wq
+
+//Uso antes de commitar(use sempre!)
+git diff //mostra a minha modificação.
+
+git diff --name-only
+// somente o nome no arquivo que foi modificado// aparece só o Readme.md
+
+git commit -am "Edit Readme"
+
+git log
+
+git show hashQueCopieiDoGitLog 
+ex: git show 2ef8b69136cb2b9504497a873cacf2a5428031dc
+
+Desfazendo as coisas:
+
+git log
+git status
+
+vim Readme.md
+//coloco qlq coisa a mais dentro
+esc :wq
+
+git status
+//o arq vai ta modificado
+
+mas aí percebo que eu nao queria ter feito isso
+
+git diff // vejo as modificações e inclusive a última modficação
+
+git checkout Readme.md //retorna o arq pra antes da última edição.
+
+git diff // não tenho nenhuma diferença, mas se eu abrir o arquivo:
+
+vim Readme.md
+
+//aí eu edito novamente e salvo 
+
+git add Readme.md // coloco o arq na área de staged
+
+git status // diz q ja temos mudanças prontas pra serem commitadas.
+
+git diff// ele não encontra diferença pq pra ele o estado já está consolidado. 
+Só falta eu commitar.
+
+git reset HEAD Readme.md  // só quero tirar o arq da fila do staged
+//Unstaged changes after reset:    M       Readme.md
+
+git diff // Ele volta a mostrar a modificação feita.
+
+git checkout HEAD Readme.md // tiro a minha mudança
+//nothing add to commit
+
+vim Readme.me // "Botando qlq coisa aq"
+
+git status
+
+git commit -am "qlqcoisa" // commito tds os arquivos comitáveis e a minha msg
+
+git log
+
+//mas eu não queria isso. Puts!!!
+//Solução:
+
+git reset --soft: pega as minhas modificações e vai só matar o commit que eu fiz, mas o arq vai tá em staged com a modifcação, prontinho para ser commitado de novo.
+          --mixed:matar o commit que eu fiz, mas volta os meus arquivos para antes do staged, modified;
+          --hard: ignora a existência do commit e td o que foi feito nele. Mata td do commit.
+
+práticando:
+
+git reset --soft 2ef8b69136cb2b9504497a873cacf2a5428031dc //foi a hash do último commit que eu peguei através do git log. OBSERVAÇÃO: esta hash eh a do commit dps q vc quer deixar. Ex:
+último commit
+penúltimo commit
+antipenúltimo commit
+// se quero tirar até o penúltimo , uso a hash do antipenúltimo , pois no fim o penúltimo não existirá mais.
+
+//vejo que o arquivo virou modified, pronto pra commitar.
+
+git commit -m "akakka"
+
+vim Readme.md  // mais coisas
+git commit -m "kkkk"
+
+git log // mostrará os committs
+
+git reset --mixed 2ef8b69136cb2b9504497a873cacf2a5428031dc
+//Unstaged changes after reset
+
+git logssh-keygen -t rsa -b 4096 -C ""
+git diff // ele vai mostrar pra mim a mudança que eu tinha feito.
+
+git commit -am "Edit Readme Again with trash"
+git log
+git reset --hard 2b5cfcd252bd4429f0894d57a1327d64b41ecc9e// esta hash foi a suponha do meio. então vai sumir os commits de cima e só ficam os de baixo.
+
+git log // o commit sumiu
+git status // não tem nda para fazer
+
+Obs q o git reset altero o histórico do commit, ou seja, se vc já tinha dado um push daquele commit e vc reserou com hard, matou o commit e quer subir de novo. Aí o git fala que há uma diferença do que eu quero pra o que ele tem, então só irei conseguir atualizar com o force.
+USE com cuidado!
+
+Criando um respositório no Github
+
+##########################################################################
+
+Para o git hub te identificar ele usa o SSH que é um protocolo que serve para autenticar um usuário remoto ao servidor. Baseado em chaves, onde existe uma chave pública e uma privada(consegue abrir a chave pública). Ou seja, a gnt envia a chave pública ao servidor que no caso é o GitHub e com a nossa chave privada dentro da nossa máquina a gnt é capaz de abrir a chave pública do servidor e somos capazes de subir o nosso código.
+
+https://help.github.com/articles/connecting-to-github-with-ssh/
+
+Temos que gerar a chave SSH e dps add essa chave ao GitHub.
+
+Clico lá no site em Generating a new SSH key e lá diz tds os passos que eu preciso fazer.
+abro o terminal gitbash e digito:
+ssh-keygen -t rsa -b 4096 -C "rcs7@cin.ufpe.br"
+//Generating public/private rsa key pair.
+//Enter file in which to save the key(/c/Users/dell/.ssh/id_rsa):
+Então só digito Enter msm
+//Created directory '/c/Users/dell/.ssh'.
+Vai pedir pra digitar o passphase e aí só digito Enter e Enter...
+Então a minha chave foi criada e tenho o id_rca e o id_rsa.pub.
+
+Digito no termial gitBahs:
+cd ~/.ssh   // é o diretório onde ficam nossas chaves do ssh
+digito ls
+// tenho id_rsc e id_rsa.pub
+É essa chave que quero pegar para por lá no gitHub: id_rsa.pub
+//para pegar a chave
+cat id_rsa.pub
+
+Posso tb abrir no vi:
+vi id-rsa.pub
+ecs :wq
+
+copio a chave. Pode ser lá do gitBash msm e vou lá no GitHub e no lado direito em cima e vou em settings e lá dentro no canto esquerdo tem SSH and GPG keys, clico elá tenho as chaves que posso add, mas eu clico em New SSH key e colo a chave lá em key: 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXttw344qE/ZIHwlNaXdekxEOIUAoVPpxIEeeWeNf6ROpeEqF9EjibpHhg9tL/TKMMljmgrijdHPpr8JSbzh1AHj4zm0D8IIj3M8s+6+KbwCb16PBetnWBJPu2lX5A5PlFrsHZ8mRtTsxzv6T9L2AVPk5X9WOnANo7qJcY3GMSvEe71gIiR/byIKXP2/VD3GOtV7S43Ky7lH6u849ayKRttxdkCqEZX+QtUQSbu1u4u9sKfXFvCb4QEDY0pKLr5df1V1PB/8powqzFmDH3d3B9JYywMQHiGP02U8JIeofZmRiB20ZPzLE/TOioO/dt+Jx80n/5DX1g5rdMoU9tWE5upxFH7PRiysstGL3uAv+puWeHTJS9OwfPXyfLFekow0Bdbw28anfzinbvobwdoeNPAWKEoR/ltcQUMqioI1RkaxjzRXld3q7BSRySa2V5cx9Tu1ho0KhkZ674pgNU4un8C9bGx8EwpzBov7q30+fJkdEtSj8LBedNsQ7fxSh9wUX/zWewNK1qEwTQvVn7ahIo3s8t+igFxp2p3mbYcazQgY950a3TEIhEsYrhd9w1v3hkx4bYy08+IuYIYkQe8CdE8WrutvJ4hDbH5NgvH7nDxQiukJWHyznQZu9oWZ/kGUDhO1eKLMVeyb7yxnk7Qd8F5r23WwGKDGhW8Q/0h6IUYQ== rcs7@cin.ufpe.br
+
+e coloco um nome lá em title. Eu quis por MeuDell.
+e aí fica salvo lá e posso dá git push sem dar erro nenhum.

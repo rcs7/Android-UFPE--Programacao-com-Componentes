@@ -1,0 +1,43 @@
+Curso de java:  https://youtu.be/Vf1AiGlaRQQ?list=PL267698F9F4DE565B
+
+new project...
+clico em src e crio new package - guardo as classes para usar em outros projetos. Por importação do package.
+
+Para criar a classe é botão direito no package(que tá dentro do src) e new...
+
+window -> preferences -> general -> appearances -> collors and fonts->java->java editor text fonts... para mudar o tam da letra...
+
+para atributos posso aperta ctrl+space q ele já preenche.
+
+Tipos de modificadores: public, private etc
+
+Criando um Scrapbook pra ver as variáveis: vou em cima do projeto e clico em new->
+odder->Java Run/Debug->Scrapbook Page ou vou em run -> inspect. //não tem no meu eclipse não sei o pq. Tenho q importar as classes do meu package.
+
+Obs: Para utilizar as classes que estão dentro do package eu preciso importá-las.
+
+//pra testar no scrapbook:
+
+Pessoa p  = new Pessoa();
+p.setNome("Ronaldo");
+p.getNome();
+p
+
+// testar no j 
+unix é melhor pq testo td e eh mais profissional.
+
+toda class criada em java herda da class object.
+
+Separar a parte de teste da parte de código fonte; Organização e não mando o teste junto com o programa para o usuário final.
+
+clico em cima da pasta do projeo -> New -> source fold
+
+O quick fix do eclipse sugere soluções para os erros de compilação.
+Ctrl + 1
+Build path é a configuração de todas as bibliotecas
+
+public void testPessoa(){
+   Pessoa p1 = new Pessoa();
+   assertEquals("nome desconhecido",p1.getNome());
+}
+//assertEquals é um método estático, ou seja , posso usar Pessoa.assertEquals("nome desconhecido",p1.getNome());

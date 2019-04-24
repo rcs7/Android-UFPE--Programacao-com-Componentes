@@ -1,0 +1,22 @@
+Primeiro, certifique-se de que a janela Project esteja aberta (selecione View > Tool Windows > Project) e que a visualização Android esteja selecionada na lista suspensa localizada no topo da janela. Você verá os seguintes arquivos:
+
+app > java > com.example.myfirstapp > MainActivity.java
+Essa é a principal activity (o ponto inicial do seu aplicativo). Quando você criar e executar o aplicativo, o sistema executará uma instância de Activity e carregará o layout.
+app > res > layout > activity_main.xml
+Esse arquivo XML define o layout da IU da activity. Ele contém um elemento TextView com o texto "Hello world!".
+app > manifests > AndroidManifest.xml
+O arquivo de manifesto descreve as características fundamentais do aplicativo e define cada um dos seus componentes.
+Gradle Scripts > build.gradle
+Você verá dois arquivos com esse nome: um para o projeto e um para o módulo "app". Cada módulo tem o próprio arquivo build.gradle, mas, no momento, este projeto tem apenas um módulo. Você trabalhará principalmente com o arquivo build.gradle do módulo para configurar como as ferramentas do Gradle compilam e criam o aplicativo. Para saber mais sobre esse arquivo\\\\\\\\\\\\, consulte Configurar sua versão.
+
+Executar em um emulador
+Execute o aplicativo em um emulador da seguinte maneira:
+
+No Android Studio, clique no módulo app na janela Project e selecione Run > Run (ou clique em Run  na barra de ferramentas).
+Na janela Select Deployment Target, clique em Create New Virtual Device. 
+Na tela Select Hardware, selecione um aparelho de telefone, como Pixel, e clique em Next.
+Na tela System Image, selecione a versão com o nível de API mais alto. Se não tiver essa versão instalada, um link Download será exibido. Clique nele e realize o download.
+Clique em Next.
+Na tela Android Virtual Device (AVD), não modifique as configurações e clique em Finish.
+Novamente na caixa de diálogo Select Deployment Target, selecione o dispositivo que acabou de criar e clique em OK.
+O Android Studio instalará e executará o aplicativo no emulador.
